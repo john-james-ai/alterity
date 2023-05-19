@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "alterity"
-version = "0.0.1"
-description = "Outlier Detection"
+version = "0.1.0"
+description = "Alterity: Outlier Detection"
 authors = [
     "John James <john.james.ai.studio@gmail.com>",
 ]
@@ -62,19 +62,26 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.isort]
 profile = "black"
-src_paths = ["src", "tests"]
+src_paths = ["alterity", "tests"]
 
 [tool.black]
 target-version = ["py37", "py38", "py39"]
 include = '\.pyi?$'
 
 [tool.pytest.ini_options]
+log_cli = true
+log_cli_level = 'DEBUG'
 addopts = """\
     --cov alterity \
     --cov tests \
     --cov-report term-missing \
     --no-cov-on-fail \
 """
+
+filterwarnings = [
+    "ignore::pytest.PytestCollectionWarning",
+    "ignore::pytest.PytestUnknownMarkWarning",
+    ]
 
 [tool.coverage.report]
 fail_under = 100
